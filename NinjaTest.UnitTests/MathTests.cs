@@ -30,4 +30,12 @@ public class MathTests
         
         Assert.That(result, Is.EqualTo(expectedResult));
     }
+
+    [Test]
+    public void GetOddNumber_LimitIsPositive_ReturnOddNumbersUpToLimit()
+    {
+        IEnumerable<int> result = _math.GetOddNumbers(5);
+        
+        Assert.That(result, Is.EquivalentTo(new [] {1,3,5}));
+    }
 }
