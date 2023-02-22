@@ -1,8 +1,9 @@
+using NinjaTest.Fundamentals;
 using TestNinja.Fundamentals;
 
 namespace NinjaTest.Test;
 
-public class ReservationTests
+public class Reservation_CanBeCancelledByTests
 {
     [SetUp]
     public void Setup()
@@ -10,7 +11,7 @@ public class ReservationTests
     }
 
     [Test]
-    public void CanBeCancelledBy_UserAdmin_ReturnsTrue()
+    public void UserAdmin_ReturnsTrue()
     {
         Reservation reservation = new();
 
@@ -20,7 +21,7 @@ public class ReservationTests
     }
 
     [Test]
-    public void CanBeCancelledBy_UserAuthorOfReservationNotAdmin_ReturnsTrue()
+    public void UserAuthorOfReservationNotAdmin_ReturnsTrue()
     {
         User user = new() { IsAdmin = false };
         Reservation reservation = new() { MadeBy = user };
@@ -31,7 +32,7 @@ public class ReservationTests
     }
 
     [Test]
-    public void CanBeCancelledBy_UserNotAuthorOfReservationNotAdmin_ReturnsFalse()
+    public void UserNotAuthorOfReservationNotAdmin_ReturnsFalse()
     {
         Reservation reservation = new();
 
