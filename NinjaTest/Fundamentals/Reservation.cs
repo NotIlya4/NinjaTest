@@ -2,7 +2,7 @@
 {
     public class Reservation
     {
-        public User MadeBy { get; set; }
+        public User? MadeBy { get; set; }
 
         public bool CanBeCancelledBy(User user)
         {
@@ -13,6 +13,6 @@
 
     public class User
     {
-        public bool IsAdmin { get; set; }
+        public required bool IsAdmin { get; set; }
     }
 }
