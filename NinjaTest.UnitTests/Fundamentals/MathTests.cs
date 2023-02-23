@@ -1,6 +1,6 @@
 ﻿using Math = NinjaTest.Fundamentals.Math;
 
-namespace NinjaTest.Test;
+namespace NinjaTest.Test.Fundamentals;
 
 public class MathTests
 {

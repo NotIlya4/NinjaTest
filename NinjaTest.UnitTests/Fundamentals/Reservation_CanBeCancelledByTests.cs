@@ -1,7 +1,6 @@
 using NinjaTest.Fundamentals;
-using TestNinja.Fundamentals;
 
-namespace NinjaTest.Test;
+namespace NinjaTest.Test.Fundamentals;
 
 public class Reservation_CanBeCancelledByTests
 {

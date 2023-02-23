@@ -1,4 +1,4 @@
-﻿namespace TestNinja.Fundamentals
+﻿namespace NinjaTest.Fundamentals
 {
     public class CustomerController
     {

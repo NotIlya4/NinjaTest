@@ -1,6 +1,6 @@
-﻿using TestNinja.Fundamentals;
+﻿using NinjaTest.Fundamentals;
 
-namespace NinjaTest.Test;
+namespace NinjaTest.Test.Fundamentals;
 
 public class HtmlFormatterTests
 {

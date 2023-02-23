@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TestNinja.Fundamentals
+﻿namespace NinjaTest.Fundamentals
 {
     public class DateHelper
     {

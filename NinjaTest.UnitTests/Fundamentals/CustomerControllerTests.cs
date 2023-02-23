@@ -1,10 +1,10 @@
-﻿using TestNinja.Fundamentals;
+﻿using NinjaTest.Fundamentals;
 
-namespace NinjaTest.Test;
+namespace NinjaTest.Test.Fundamentals;
 
 public class CustomerControllerTests
 {
-    private CustomerController _customerController = null;
+    private CustomerController _customerController = null!;
 
     [SetUp]
     public void SetUp()

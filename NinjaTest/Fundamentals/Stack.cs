@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TestNinja.Fundamentals
+﻿namespace NinjaTest.Fundamentals
 {
     public class Stack<T>
     {

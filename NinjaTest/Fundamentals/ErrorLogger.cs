@@ -1,13 +1,11 @@
 ﻿
-using System;
-
-namespace TestNinja.Fundamentals
+namespace NinjaTest.Fundamentals
 {
     public class ErrorLogger
     {
-        public string LastError { get; set; }
+        public string? LastError { get; set; }
 
-        public event EventHandler<Guid> ErrorLogged; 
+        public event EventHandler<Guid>? ErrorLogged; 
         
         public void Log(string error)
         {
