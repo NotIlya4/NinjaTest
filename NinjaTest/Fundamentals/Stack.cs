@@ -8,9 +8,6 @@
 
         public void Push(T obj)
         {
-            if (obj == null)
-                throw new ArgumentNullException();
-            
             _list.Add(obj);
         }
 
@@ -24,7 +21,6 @@
 
             return result; 
         }
-
 
         public T Peek()
         {
