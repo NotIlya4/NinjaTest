@@ -6,10 +6,12 @@ namespace NinjaTest.Mocking
     public class VideoService
     {
         private readonly IFileReader _fileReader;
+        private readonly IVideoRepository _videoRepository;
 
-        public VideoService(IFileReader fileReader)
+        public VideoService(IFileReader fileReader, IVideoRepository videoRepository)
         {
             _fileReader = fileReader;
+            _videoRepository = videoRepository;
         }
         
         public string ReadVideoTitle()
@@ -21,22 +23,38 @@ namespace NinjaTest.Mocking
             return video.Title;
         }
 
-        public string GetUnprocessedVideosAsCsv()
+        public async Task<string> GetUnprocessedVideosAsCsv()
         {
             var videoIds = new List<int>();
             
-            using (var context = new VideoContext())
-            {
-                var videos = 
-                    (from video in context.Videos
-                    where !video.IsProcessed
-                    select video).ToList();
+            var videos = await _videoRepository.GetUnprocessedVideos();
                 
-                foreach (var v in videos)
-                    videoIds.Add(v.Id);
+            foreach (var v in videos)
+                videoIds.Add(v.Id);
 
-                return String.Join(",", videoIds);
-            }
+            return String.Join(",", videoIds);
+        }
+    }
+
+    public interface IVideoRepository
+    {
+        Task<List<Video>> GetUnprocessedVideos();
+    }
+    
+    public class VideoRepository : IVideoRepository
+    {
+        private readonly VideoContext _context;
+
+        public VideoRepository(VideoContext context)
+        {
+            _context = context;
+        }
+        
+        public async Task<List<Video>> GetUnprocessedVideos()
+        {
+            return await (from video in _context.Videos
+                where !video.IsProcessed
+                select video).ToListAsync();
         }
     }
 
