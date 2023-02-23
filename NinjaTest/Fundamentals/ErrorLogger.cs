@@ -5,7 +5,7 @@ namespace NinjaTest.Fundamentals
     {
         public string? LastError { get; set; }
 
-        public event EventHandler<Guid>? ErrorLogged; 
+        public event EventHandler<Guid> ErrorLogged = (sender, guid) => {}; 
         
         public void Log(string? error)
         {
@@ -16,8 +16,8 @@ namespace NinjaTest.Fundamentals
             
             // Write the log to a storage
             // ...
-
-            ErrorLogged?.Invoke(this, Guid.NewGuid());
+            
+            ErrorLogged.Invoke(this, Guid.NewGuid());
         }
     }
 }
