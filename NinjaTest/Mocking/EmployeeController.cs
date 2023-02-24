@@ -4,18 +4,16 @@ namespace NinjaTest.Mocking
 {
     public class EmployeeController
     {
-        private EmployeeContext _db;
+        private IEmployeeRepository _db;
 
-        public EmployeeController()
+        public EmployeeController(IEmployeeRepository employeeRepository)
         {
-            _db = new EmployeeContext();
+            _db = employeeRepository;
         }
 
         public ActionResult DeleteEmployee(int id)
         {
-            var employee = _db.Employees.Find(id);
-            _db.Employees.Remove(employee);
-            _db.SaveChanges();
+            _db.RemoveById(id);
             return RedirectToAction("Employees");
         }
 
@@ -23,6 +21,11 @@ namespace NinjaTest.Mocking
         {
             return new RedirectResult();
         }
+    }
+
+    public interface IEmployeeRepository
+    {
+        public Task RemoveById(int id);
     }
 
     public class ActionResult { }
